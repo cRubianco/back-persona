@@ -5,6 +5,9 @@ import { AppModule } from './app.module';
 import { Constants } from './utils/constants';
 
 async function bootstrap() {
+
+  // se inyecta esta API Swagger en la aplicación 
+  // y le damos una ruta de acceso, en este caso api
   const app = await NestFactory.create(AppModule);
   
   const options = new DocumentBuilder()

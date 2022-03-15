@@ -1,10 +1,11 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { PersonDTO } from './dto/personDTO';
 import { PersonService } from './person.service';
 
-@Controller('persona')
+@Controller('personas')
 export class PersonController {
-  constructor(private readonly personService: PersonService) {}
 
+  constructor(private readonly personService: PersonService) {}
 
   @Get()
   getAllPerson(){
@@ -14,6 +15,11 @@ export class PersonController {
   @Get(':id')
   getById(@Param('id', ParseIntPipe) id: number) {
     return this.personService.getPersonById(id);
+  }
+
+  @Post()
+  async create(@Body() personDTO: PersonDTO) {
+    return await this.personService.createPerson(personDTO);
   }
 
 }

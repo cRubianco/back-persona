@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { PersonDTO } from './dto/personDTO';
 import { PersonEntity } from './entity/person.entity';
 import { PersonRepository } from './person.repository';
 
@@ -25,6 +26,15 @@ export class PersonService {
       throw new NotFoundException({message: `No se encontro ninguna persona con el id ${person.id}.`});
     }
     return person;
+  }
+
+  async createPerson(personDTO: PersonDTO): Promise<any> {
+    // verifico si existe
+    // const exists = await this.getPersonByName
+    const person = this.personRepository.create(personDTO);
+    await this.personRepository.save(person);
+    return {message: 'se creo una persona'};
+    throw new Error('Method not implemented.');
   }
 
 }

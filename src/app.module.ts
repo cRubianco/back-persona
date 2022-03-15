@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Constants } from './utils/constants';
 import { PersonModule } from './person/person.module';
+import { ProductsController } from './products/products.controller';
 
 @Module({
   imports: [
@@ -28,7 +29,7 @@ import { PersonModule } from './person/person.module';
     }),
     PersonModule
   ],
-  controllers: [AppController],
+  controllers: [AppController, ProductsController],
   providers: [AppService],
 })
 
