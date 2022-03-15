@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Res } from '@nestjs/common';
 
 @Controller('products')
 export class ProductsController {
@@ -15,11 +15,11 @@ export class ProductsController {
   }
 
   @Get(':id')
-  getProductById(@Res() resizeBy, @Param('id') id: number) {
+  getProductById(@Res() res, @Param('id') id: number) {
     if (id >100) {
-      return 'Nro muy grande';
+      return res.status(HttpStatus.NOT_FOUND).send('Nro muy grande');
     } else {
-      return `Este es el producto  con el ${id}`
+      return res.status(HttpStatus.OK).send(`Este es el producto  con el ${id}`);
     }
   }
 
@@ -28,5 +28,10 @@ export class ProductsController {
 
     return `Metodo post ${body}`;
   } 
+
+  @Delete(':id')
+  deleteProduct(@Param('id') id: number) {
+    return this.routeNotFound();
+  }
 
 }

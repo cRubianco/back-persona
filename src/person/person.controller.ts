@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common
 import { PersonDTO } from './dto/personDTO';
 import { PersonService } from './person.service';
 
-@Controller('personas')
+@Controller('persons')
 export class PersonController {
 
   constructor(private readonly personService: PersonService) {}
