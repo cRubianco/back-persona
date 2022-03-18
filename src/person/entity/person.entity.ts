@@ -17,9 +17,11 @@ export class PersonEntity {
   @ApiProperty({ example: 1, description: 'The surname of the Person' })
   surname: string;
 
-  @ApiProperty({
-    example: 'Femenino',
-    description: 'The sex of the Person',
+  @ApiProperty({ example: 'Femenino', description: 'The sex of the Person',
   })
   gender: string;
+
+  @ApiProperty({ description: 'The state of the Person' })
+  state: string;
+  
 }

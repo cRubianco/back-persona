@@ -5,6 +5,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Constants } from './utils/constants';
 import { PersonModule } from './person/person.module';
+import { BooksController } from './books/books.controller';
+import { BooksService } from './books/books.service';
 
 @Module({
   imports: [
@@ -28,8 +30,8 @@ import { PersonModule } from './person/person.module';
     }),
     PersonModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, BooksController],
+  providers: [AppService, BooksService],
 })
 
 export class AppModule {}
