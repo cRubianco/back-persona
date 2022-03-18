@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
-import { PersonDTO } from './dto/personDTO';
+import { PersonDTO } from '../model/dto/personDTO';
 import { PersonService } from './person.service';
 
 @Controller('persons')

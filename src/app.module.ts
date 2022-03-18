@@ -4,9 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Constants } from './utils/constants';
-import { PersonModule } from './person/person.module';
-import { ProductsController } from './products/products.controller';
-
+import { ServicesModule } from './services/services.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -27,10 +25,10 @@ import { ProductsController } from './products/products.controller';
       }),
       inject:[ConfigService],
     }),
-    PersonModule
+    ServicesModule,
   ],
-  controllers: [AppController, ProductsController],
-  providers: [AppService],
+  controllers: [AppController],
+  providers: [AppService, ServicesModule]
 })
 
 export class AppModule {}

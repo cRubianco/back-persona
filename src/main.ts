@@ -1,7 +1,6 @@
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { util } from 'prettier';
 import { AppModule } from './app.module';
 import { Constants } from './utils/constants';
 
@@ -25,6 +24,6 @@ async function bootstrap() {
   const server = app.get(ConfigService);
   const port = +server.get<number>(Constants.SERVER_PORT) || 3000;
   await app.listen(port);
-  console.info(`Server istening on port ${await app.getUrl()}`);
+  console.info(`Server listening on port ${await app.getUrl()}`);
 }
 bootstrap();
