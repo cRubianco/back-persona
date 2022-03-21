@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity({name: 'person'})
+@Entity({name: 'persons'})
 export class PersonEntity {
   
   @PrimaryGeneratedColumn()
@@ -11,15 +11,26 @@ export class PersonEntity {
    * The name of the Persons
    * @example John
    */
-  @Column({ type: 'varchar', length: 20 })
+  @Column({ type: 'varchar', length: 40, nullable: false })
   name: string;
 
-  @ApiProperty({ example: 1, description: 'The surname of the Person' })
+/*   @ApiProperty({ example: 1, description: 'The surname of the Person' })
+  surname: string; */
+  @Column({ type: 'varchar', length: 40, nullable: false })
   surname: string;
 
-  @ApiProperty({
+/*   @ApiProperty({
     example: 'Femenino',
     description: 'The sex of the Person',
   })
-  gender: string;
+  gender: string; */
+  @Column()
+  state: boolean;
+  
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+  
 }

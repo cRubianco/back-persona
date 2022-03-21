@@ -1,5 +1,6 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { MessageDTO } from 'src/model/dto/messageDTO';
 import { PersonDTO } from '../model/dto/personDTO';
 import { PersonEntity } from '../model/entity/person.entity';
 import { PersonRepository } from './person.repository';
@@ -35,6 +36,39 @@ export class PersonService {
     await this.personRepository.save(person);
     return {message: 'se creo una persona'};
     throw new Error('Method not implemented.');
+  }
+
+  async updatePerson(id: number, dto: PersonDTO): Promise<any> {
+    const person =  await this.getPersonById(id);
+    //Verifico si existe ese ID
+    if(!person) {
+      throw new BadRequestException({message: 'La persona no existe en la BD'})
+    }
+/*     //Verifico si existe y son distintos los id
+    const exists = await this.getTaskByName(dto.title);
+    if (exists.id !== task.id) {
+      throw new BadRequestException({message: 'El título y el id de la tarea no coinciden ...'})
+    } */
+    dto.name
+     ?  person.name = dto.name
+     :  person.name = person.name; 
+    dto.surname
+     ?  person.surname = dto.surname
+     :  person.surname = person.surname; 
+     dto.state
+     ?  person.state = dto.state
+     :  person.state = person.state; 
+     console.log('hola dto', dto);
+     
+    await this.personRepository.save(person);
+    // return {message: `Se actualizo la tarea con el título ${task.title} `}
+    return new MessageDTO(`Se actualizo la persona con el apellido ${person.surname} `);
+  }  
+
+  async deletePerson(id: number): Promise<any> {
+    const person = await this.getPersonById(id);
+    await this.personRepository.delete(person);
+    return new MessageDTO(`Se borro la tarea con el título ${person.name} `);
   }
 
 }

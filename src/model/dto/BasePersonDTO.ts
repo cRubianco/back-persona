@@ -16,5 +16,8 @@ export class BasePersonDTO {
   @ApiProperty()
   @IsString()
   readonly surname: string;
+
+  @ApiProperty()
+  readonly state: boolean;
     
 }

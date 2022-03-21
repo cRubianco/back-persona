@@ -11,7 +11,7 @@ export class BooksService {
     if (!id) {
       return `No se encontro el libro con el ${id}`
     } else {
-      return id;
+      return `Libro con id ${id}`;
     }
   }
 

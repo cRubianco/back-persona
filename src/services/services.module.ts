@@ -6,10 +6,13 @@ import { ProductsController } from 'src/products/products.controller';
 
 @Module({
   imports: [
+    PersonModule,
   ],
-  controllers: [ProductsController, BooksController], 
+  controllers: [
+    ProductsController, BooksController
+  ], 
   providers: [
-    PersonModule, BooksService,
+    BooksService,
   ]
 })
 export class ServicesModule {}

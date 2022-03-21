@@ -8,7 +8,9 @@ async function bootstrap() {
 
   // se inyecta esta API Swagger en la aplicación 
   // y le damos una ruta de acceso, en este caso api
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: ['error', 'warn', 'log']
+  });
   
   const options = new DocumentBuilder()
     .setTitle('Backend person')
