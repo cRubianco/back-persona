@@ -44,24 +44,21 @@ export class PersonService {
     if(!person) {
       throw new BadRequestException({message: 'La persona no existe en la BD'})
     }
-/*     //Verifico si existe y son distintos los id
-    const exists = await this.getTaskByName(dto.title);
-    if (exists.id !== task.id) {
-      throw new BadRequestException({message: 'El título y el id de la tarea no coinciden ...'})
-    } */
     dto.name
      ?  person.name = dto.name
      :  person.name = person.name; 
     dto.surname
      ?  person.surname = dto.surname
      :  person.surname = person.surname; 
+     dto.gender 
+     ?  person.gender = dto.gender
+     :  person.gender = person.gender;
      dto.state
      ?  person.state = dto.state
      :  person.state = person.state; 
      console.log('hola dto', dto);
      
     await this.personRepository.save(person);
-    // return {message: `Se actualizo la tarea con el título ${task.title} `}
     return new MessageDTO(`Se actualizo la persona con el apellido ${person.surname} `);
   }  
 

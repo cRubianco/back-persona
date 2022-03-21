@@ -24,6 +24,10 @@ export class PersonEntity {
     description: 'The sex of the Person',
   })
   gender: string; */
+  @ApiProperty({example: 'Femenino', description: 'El sexo de la persona'})
+  @Column({ name: "gender", type: 'enum', enum: ['F', 'M', ] })
+  gender: string; 
+
   @Column()
   state: boolean;
   
