@@ -8,8 +8,8 @@ export class BookEntity {
   id: number;
 
   /**
-   * The name of the Persons
-   * @example John
+   * The title of book
+   * @example The Principe
    */
   @Column({ type: 'varchar', length: 50 })
   title: string;
