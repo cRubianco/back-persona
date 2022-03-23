@@ -29,10 +29,11 @@
 7) Creo el controller persona
 		nest g co persona --no-spec
 		
-8) Imstalo las dependencias necesarias para validación y crear la  API
-		npm i --save class-validator class-transformer   		// Validaciones
+8) Instalo las dependencias necesarias para validación y crear la  API
+
+	npm i --save class-validator class-transformer   		// Validaciones
 		
-		npm install --save @nestjs/swagger swagger-ui-express	// open API
+	npm install --save @nestjs/swagger swagger-ui-express		// open API
 		
 		
 		
